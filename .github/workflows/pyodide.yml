@@ -1,0 +1,14 @@
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: jobovy/pyodide-buildpackage-action@v1
+    - uses: actions/upload-artifact@v2-preview
+      with:
+        name: mwparserfromhell-wheel-pyodide
+        path: wheelhouse/*.whl
+        meta-yaml-path: recipe/meta.yaml
